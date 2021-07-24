@@ -8,11 +8,9 @@ public class JpaStarterRead {
 
 	public static void main(String[] args) {
 
-
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myApp");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-		
 //		Employee employee1 = entityManager.find(Employee.class, 1);
 //	//	System.out.println(employee1);
 //		System.out.println("---fetching employee");
@@ -20,11 +18,20 @@ public class JpaStarterRead {
 //		System.out.println("---fetching card");
 //
 //		System.out.println(employee1.getCard());
+
+	//	AccessCard card = entityManager.find(AccessCard.class, 3);
+
+	//	PayStub paySub = entityManager.find(PayStub.class, 5);
+		//System.out.println(paySub.getEmployee());
+
 		
-		AccessCard card = entityManager.find(AccessCard.class, 3);
-		
-		
-		
+		  Employee employee = entityManager.find(Employee.class, 2);
+		  System.out.println(employee.getPayStubs());
+			
+		  
+		  
+		  
+		  
 	}
 
 }

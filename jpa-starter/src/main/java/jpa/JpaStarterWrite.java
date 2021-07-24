@@ -7,6 +7,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import com.sun.tools.javac.util.List;
+
 public class JpaStarterWrite {
 
 	public static void main(String[] args) {
@@ -69,6 +71,21 @@ public class JpaStarterWrite {
 //		employee2.setSsn("1235");
 		
 		
+		PayStub payStub1= new PayStub();
+		payStub1.setPayPeriodEnd(new Date());
+		payStub1.setPayPeriodStart(new Date());
+		payStub1.setSalary(1000);
+		payStub1.setEmployee(employee1);
+		
+		PayStub payStub2= new PayStub();
+		payStub2.setPayPeriodEnd(new Date());
+		payStub2.setPayPeriodStart(new Date());
+		payStub2.setSalary(2000);
+		payStub2.setEmployee(employee1);
+		
+		employee1.setPayStubs(List.of(payStub1, payStub2));
+		
+		
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myApp");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		EntityTransaction transaction = entityManager.getTransaction();
@@ -77,6 +94,9 @@ public class JpaStarterWrite {
 		entityManager.persist(employee1);
 		entityManager.persist(card);	
 		entityManager.persist(card1);
+		entityManager.persist(payStub1);
+		entityManager.persist(payStub2);
+
 //		entityManager.persist(employee2);
 		transaction.commit();
 		entityManager.close();

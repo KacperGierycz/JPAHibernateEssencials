@@ -1,15 +1,16 @@
 package jpa;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -32,6 +33,12 @@ public class Employee {
 	@Column(unique=true, length=10, nullable=false, updatable=false)
 	private String ssn;
 	
+	public List<PayStub> getPayStubs() {
+		return payStubs;
+	}
+	public void setPayStubs(List<PayStub> payStubs) {
+		this.payStubs = payStubs;
+	}
 	@Temporal(TemporalType.DATE)
 	private Date dob;
 	
@@ -44,6 +51,8 @@ public class Employee {
 	@OneToOne//(fetch = FetchType.LAZY)
 	private AccessCard card;
 	
+	@OneToMany(mappedBy = "employee")
+	private List<PayStub>payStubs;
 	
 	
 	public AccessCard getCard() {
@@ -91,8 +100,9 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", ssn=" + ssn + ", dob=" + dob + ", type="
-				+ type + ", card=" + card + "]";
+				+ type + ", card=" + card +  "]";
 	}
+
 
 	
 	
