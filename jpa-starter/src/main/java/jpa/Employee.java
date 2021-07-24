@@ -41,7 +41,7 @@ public class Employee {
 	@Transient
 	private String debug;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne//(fetch = FetchType.LAZY)
 	private AccessCard card;
 	
 	

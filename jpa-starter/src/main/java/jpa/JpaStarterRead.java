@@ -13,15 +13,15 @@ public class JpaStarterRead {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		
-		Employee employee1 = entityManager.find(Employee.class, 1);
-	//	System.out.println(employee1);
-		System.out.println("---fetching employee");
-		System.out.println(employee1.getName());
-		System.out.println("---fetching card");
-
-		System.out.println(employee1.getCard());
+//		Employee employee1 = entityManager.find(Employee.class, 1);
+//	//	System.out.println(employee1);
+//		System.out.println("---fetching employee");
+//		System.out.println(employee1.getName());
+//		System.out.println("---fetching card");
+//
+//		System.out.println(employee1.getCard());
 		
-		
+		AccessCard card = entityManager.find(AccessCard.class, 3);
 		
 		
 		

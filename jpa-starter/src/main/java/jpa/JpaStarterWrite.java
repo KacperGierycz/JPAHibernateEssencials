@@ -54,13 +54,14 @@ public class JpaStarterWrite {
 		card.setActive(true);
 		card.setFirmwareVersion("1.0.0");
 		employee.setCard(card);
+		card.setOwner(employee);
 		
 		AccessCard card1 = new AccessCard();
 		card1.setIssueDate(new Date());
 		card1.setActive(true);
 		card1.setFirmwareVersion("1.0.0");
 		employee1.setCard(card1);
-		
+		card1.setOwner(employee1);
 		
 		
 //		Employee employee2 = new Employee();
