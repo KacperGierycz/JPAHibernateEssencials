@@ -6,9 +6,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,7 +20,7 @@ import javax.persistence.Transient;
 @Table(name = "EMPLOYEE_DATA")
 public class Employee {
 	
-	@Id
+	@Id 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	
@@ -39,6 +41,17 @@ public class Employee {
 	@Transient
 	private String debug;
 	
+	@OneToOne(fetch = FetchType.LAZY)
+	private AccessCard card;
+	
+	
+	
+	public AccessCard getCard() {
+		return card;
+	}
+	public void setCard(AccessCard card) {
+		this.card = card;
+	}
 	public EmployeeType getType() {
 		return type;
 	}
@@ -78,8 +91,9 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", ssn=" + ssn + ", dob=" + dob + ", type="
-				+ type + "]";
+				+ type + ", card=" + card + "]";
 	}
+
 	
 	
 	

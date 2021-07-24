@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class JpaStarterMain {
+public class JpaStarterWrite {
 
 	public static void main(String[] args) {
 		
@@ -41,6 +41,7 @@ public class JpaStarterMain {
 		employee.setAge(20);
 		
 		
+		
 		Employee employee1 = new Employee();
 		employee1.setName("Foo");
 		employee1.setSsn("1234");
@@ -52,12 +53,13 @@ public class JpaStarterMain {
 		card.setIssueDate(new Date());
 		card.setActive(true);
 		card.setFirmwareVersion("1.0.0");
+		employee.setCard(card);
 		
 		AccessCard card1 = new AccessCard();
 		card1.setIssueDate(new Date());
 		card1.setActive(true);
 		card1.setFirmwareVersion("1.0.0");
-		
+		employee1.setCard(card1);
 		
 		
 		
