@@ -1,5 +1,6 @@
 package jpa;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class Employee {
 	private AccessCard card;
 	
 	@OneToMany(mappedBy = "employee")
-	private List<PayStub>payStubs;
+	private List<PayStub>payStubs= new ArrayList<>();
 	
 	
 	public AccessCard getCard() {
@@ -103,7 +104,9 @@ public class Employee {
 				+ type + ", card=" + card +  "]";
 	}
 
-
+	public void addPayStub(PayStub payStub) {
+		this.payStubs.add(payStub);
+	}
 	
 	
 	

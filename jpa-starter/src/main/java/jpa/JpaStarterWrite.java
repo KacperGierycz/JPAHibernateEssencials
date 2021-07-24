@@ -75,6 +75,7 @@ public class JpaStarterWrite {
 		payStub1.setPayPeriodEnd(new Date());
 		payStub1.setPayPeriodStart(new Date());
 		payStub1.setSalary(1000);
+		employee1.addPayStub(payStub1);
 		payStub1.setEmployee(employee1);
 		
 		PayStub payStub2= new PayStub();
@@ -82,8 +83,9 @@ public class JpaStarterWrite {
 		payStub2.setPayPeriodStart(new Date());
 		payStub2.setSalary(2000);
 		payStub2.setEmployee(employee1);
+		employee1.addPayStub(payStub2);
 		
-		employee1.setPayStubs(List.of(payStub1, payStub2));
+	//	employee1.setPayStubs(List.of(payStub1, payStub2));
 		
 		
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myApp");
