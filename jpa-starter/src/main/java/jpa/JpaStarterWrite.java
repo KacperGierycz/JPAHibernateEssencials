@@ -85,6 +85,13 @@ public class JpaStarterWrite {
 		payStub2.setEmployee(employee1);
 		employee1.addPayStub(payStub2);
 		
+		
+		EmailGroup group1 = new EmailGroup();
+		group1.setName("Company Watercooler discussions");
+		
+		EmailGroup group2 = new EmailGroup();
+		group2.setName("Engineering");
+		
 	//	employee1.setPayStubs(List.of(payStub1, payStub2));
 		
 		
@@ -92,12 +99,19 @@ public class JpaStarterWrite {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
+		
 		entityManager.persist(employee);	
 		entityManager.persist(employee1);
+		
 		entityManager.persist(card);	
 		entityManager.persist(card1);
+		
 		entityManager.persist(payStub1);
 		entityManager.persist(payStub2);
+		
+		entityManager.persist(group1);
+		entityManager.persist(group2);
+		
 
 //		entityManager.persist(employee2);
 		transaction.commit();
