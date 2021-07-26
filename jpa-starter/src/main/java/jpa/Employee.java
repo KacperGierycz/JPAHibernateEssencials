@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -38,12 +39,7 @@ public class Employee {
 	@Column(unique=true, length=10, nullable=false, updatable=false)
 	private String ssn;
 	
-	public List<PayStub> getPayStubs() {
-		return payStubs;
-	}
-	public void setPayStubs(List<PayStub> payStubs) {
-		this.payStubs = payStubs;
-	}
+
 	@Temporal(TemporalType.DATE)
 	private Date dob;
 	
@@ -56,7 +52,7 @@ public class Employee {
 	@OneToOne//(fetch = FetchType.LAZY)
 	private AccessCard card;
 	
-	@OneToMany(mappedBy = "employee")
+	@OneToMany(mappedBy = "employee",cascade = CascadeType.REMOVE)
 	private List<PayStub>payStubs= new ArrayList<>();
 	
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -116,6 +112,13 @@ public class Employee {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public List<PayStub> getPayStubs() {
+		return payStubs;
+	}
+	public void setPayStubs(List<PayStub> payStubs) {
+		this.payStubs = payStubs;
+	}
+	
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", ssn=" + ssn + ", dob=" + dob + ", type="

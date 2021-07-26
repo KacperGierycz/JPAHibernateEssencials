@@ -1,4 +1,4 @@
-package jpa;
+ package jpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,17 +14,14 @@ public static void main(String[] args) {
 	
 	
 	Employee employee = entityManager.find(Employee.class, 2);
-	EmailGroup emailGroup = entityManager.find(EmailGroup.class, 8);
 	
 	
-	employee.addEmailSubscription(emailGroup);
-	emailGroup.addMember(employee);
+
 	
 	
 	EntityTransaction transaction = entityManager.getTransaction();
 	transaction.begin();
-	entityManager.persist(emailGroup);
-	entityManager.persist(employee);
+	entityManager.remove(employee);
 	
 	
 	
