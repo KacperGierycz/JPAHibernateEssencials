@@ -119,11 +119,7 @@ public class Employee {
 		this.payStubs = payStubs;
 	}
 	
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", ssn=" + ssn + ", dob=" + dob + ", type="
-				+ type + ", card=" + card +  "]";
-	}
+
 
 	public void addPayStub(PayStub payStub) {
 		this.payStubs.add(payStub);
