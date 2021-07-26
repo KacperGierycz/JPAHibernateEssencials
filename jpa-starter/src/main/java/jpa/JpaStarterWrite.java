@@ -88,9 +88,18 @@ public class JpaStarterWrite {
 		
 		EmailGroup group1 = new EmailGroup();
 		group1.setName("Company Watercooler discussions");
+		group1.addMember(employee);
+		group1.addMember(employee1);
+		employee.addEmailSubscription(group1);
+		employee1.addEmailSubscription(group1);
+		
 		
 		EmailGroup group2 = new EmailGroup();
 		group2.setName("Engineering");
+		employee.addEmailSubscription(group2);
+		group2.addMember(employee);
+		
+		
 		
 	//	employee1.setPayStubs(List.of(payStub1, payStub2));
 		

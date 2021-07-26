@@ -8,9 +8,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -55,7 +59,21 @@ public class Employee {
 	@OneToMany(mappedBy = "employee")
 	private List<PayStub>payStubs= new ArrayList<>();
 	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "EMAIL_GROUP_SUBSCRIPTIONS",
+	joinColumns = @JoinColumn(name="EMPLOYEE_ID"),
+	inverseJoinColumns = @JoinColumn(name="SUBSCRIPTION_EMAIL_ID")
 	
+			)
+	private List<EmailGroup> emailGroups= new ArrayList<>();
+	
+	
+	public List<EmailGroup> getEmailGroups() {
+		return emailGroups;
+	}
+	public void setEmailGroups(List<EmailGroup> emailGroups) {
+		this.emailGroups = emailGroups;
+	}
 	public AccessCard getCard() {
 		return card;
 	}
@@ -108,7 +126,9 @@ public class Employee {
 		this.payStubs.add(payStub);
 	}
 	
-	
+	public void addEmailSubscription(EmailGroup emailGroup) {
+		this.emailGroups.add(emailGroup);
+	}
 	
 
 }

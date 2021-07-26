@@ -24,9 +24,13 @@ public class JpaStarterRead {
 	//	PayStub paySub = entityManager.find(PayStub.class, 5);
 		//System.out.println(paySub.getEmployee());
 
+		EmailGroup emailGroup = entityManager.find(EmailGroup.class, 7);
+		System.out.println("Email Group accessing members...");
+		System.out.println(emailGroup.getMembers());
 		
-		  Employee employee = entityManager.find(Employee.class, 2);
-		  System.out.println(employee.getPayStubs());
+		
+	//	  Employee employee = entityManager.find(Employee.class, 2);
+		//  System.out.println(employee.getPayStubs());
 			
 		  
 		  
