@@ -49,7 +49,7 @@ public class JpaStarterWrite {
 		employee1.setSsn("1234");
 		employee1.setDob(new Date());
 		employee1.setType(EmployeeType.FULL_TIME);
-		employee1.setAge(20);
+		employee1.setAge(30);
 		
 		AccessCard card = new AccessCard();
 		card.setIssueDate(new Date());
