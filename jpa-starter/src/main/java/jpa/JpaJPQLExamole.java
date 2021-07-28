@@ -24,6 +24,17 @@ public class JpaJPQLExamole {
 	//	e where e.card.isActive = true
 	// TypedQuery<String> query= .... select e.name from Employee e; List<String>=to list
 	//	Query = select e.age, e.name from Employee e; List result= to list
+	
+		int minAge=25;
+		
+		TypedQuery<Employee> queryOfEmployes25= entityManager.createQuery(
+				"select e from Employee e where e.age>:minAge"
+				, Employee.class);
+		queryOfEmployes25.setParameter("minAge", minAge);
+		List<Employee> resultList22= queryOfEmployes25.getResultList();
+		resultList22.forEach(e-> System.out.println(e.getName()));
+		
+		
 		
 		TypedQuery<Object[]> queryOfObjects= entityManager.createQuery(
 				"select e.name, e.age from Employee e"
@@ -40,6 +51,10 @@ public class JpaJPQLExamole {
 		resultList.forEach(System.out::println);
 		
 		
+		TypedQuery<Employee> createNamedQuery = entityManager.createNamedQuery("emp name asc",Employee.class);
+		createNamedQuery.setParameter("age", 25);
+		List<Employee> resultList3= createNamedQuery.getResultList();
+		resultList3.forEach(System.out::println);
 		
 		entityManager.close();
 		entityManagerFactory.close();
